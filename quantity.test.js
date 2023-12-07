@@ -12,6 +12,8 @@ const {
   YARD,
   FURLONG,
   MILE,
+  CELCIUS,
+  FAHRENHEIT
 } = require("./unit");
 
 describe("quantity", () => {
@@ -126,6 +128,12 @@ describe("quantity", () => {
           new Quantity(1, INCH).add(new Quantity(1, TEASPOON));
         }).toThrow(TypeError);
       });
+    });
+  });
+
+  describe("Temperatures", () => {
+    test("0 degrees c is 32 degrees f", () => {
+      expect(new Quantity(0, CELCIUS).isEqual(new Quantity(32, FAHRENHEIT))).toBe(true)
     });
   });
 });
