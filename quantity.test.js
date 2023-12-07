@@ -56,12 +56,22 @@ describe('quantity', () => {
       });
     });
   }); 
-  describe('Distance', () => {
+  describe('distance', () => {
     describe('is equal' , () => {
+      test('1 inch is equal to 1 inch', () => {
+        expect(new Quantity(1, INCH).isEqual(new Quantity(1, INCH))).toBe(true)
+      });
       test('12 inches is equal to 1 foot', () => {
         expect(new Quantity(12, INCH).isEqual(new Quantity(1, FOOT))).toBe(true)
       });
     });
   });
+  // describe('Edge cases', () => {
+  //   describe('is equal' , () => {
+  //     test('1 inch is not equal to 1 teaspoon', () => {
+  //       expect(new Quantity(1, INCH).isEqual(new Quantity(1, TEASPOON))).toBe(false)
+  //     });
+  //   });
+  // });
 });
 
