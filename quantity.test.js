@@ -75,12 +75,12 @@ describe('quantity', () => {
       });
     });
   });
-  // describe('Edge cases', () => {
-  //   describe('is equal' , () => {
-  //     test('1 inch is not equal to 1 teaspoon', () => {
-  //       expect(new Quantity(1, INCH).isEqual(new Quantity(1, TEASPOON))).toBe(false)
-  //     });
-  //   });
-  // });
+   describe('Edge cases', () => {
+     describe('is equal' , () => {
+       test('1 inch is not equal to 1 teaspoon', () => {
+         expect(new Quantity(1, INCH).isEqual(new Quantity(1, TEASPOON))).toBe(false)
+       });
+     });
+   });
 });
 

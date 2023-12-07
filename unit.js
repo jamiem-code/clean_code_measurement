@@ -1,9 +1,7 @@
 class Unit {
-    constructor(relativeUnitMultiplier, relativeUnit = null, type) {
-        this.relativeUnitMultiplier = relativeUnitMultiplier
-        this.baseUnitMultiplier = this.relativeUnitMultiplier * (relativeUnit?.baseUnitMultiplier ?? 1)
-        this.relativeUnit = relativeUnit
-        this.type = type
+    constructor(relativeUnitMultiplier, relativeUnit = null) {
+        this.baseUnitMultiplier = relativeUnitMultiplier * (relativeUnit?.baseUnitMultiplier ?? 1)
+        this.baseUnit = relativeUnit?.baseUnit ?? this
     }
 
     getBaseUnits(amount) {
@@ -14,9 +12,10 @@ class Unit {
         return otherValue * otherUnit.baseUnitMultiplier / this.baseUnitMultiplier;
     }
 
-    isSameType(other){
-        return other.type === this.type
+    isComparable(otherUnit){
+        return otherUnit.baseUnit === this.baseUnit
     }
+
 }
 
 

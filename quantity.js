@@ -5,7 +5,7 @@ class Quantity {
     }
 
     isEqual(other) {
-        if (!other.unit.isSameType(this.unit))
+        if (!this.unit.isComparable(other.unit))
             return false
 
         let otherAmountInBaseUnits = other.unit.getBaseUnits(other.value);
