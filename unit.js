@@ -1,8 +1,9 @@
 class Unit {
-    constructor(relativeUnitMultiplier, relativeUnit = null) {
+    constructor(relativeUnitMultiplier, relativeUnit = null, type) {
         this.relativeUnitMultiplier = relativeUnitMultiplier
         this.baseUnitMultiplier = this.relativeUnitMultiplier * (relativeUnit?.baseUnitMultiplier ?? 1)
         this.relativeUnit = relativeUnit
+        this.type = type
     }
 
     getBaseUnits(amount) {
@@ -11,6 +12,10 @@ class Unit {
 
     getConvertedAmount(otherUnit, otherValue) {
         return otherValue * otherUnit.baseUnitMultiplier / this.baseUnitMultiplier;
+    }
+
+    isSameType(other){
+        return other.type === this.type
     }
 }
 
