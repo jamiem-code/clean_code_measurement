@@ -25,8 +25,9 @@ const GALLON = new Unit(4, QUART)
 
 const INCH = new Unit (1)
 const FOOT = new Unit(12, INCH)
+const YARD = new Unit(3, FOOT)
 
-module.exports = {TEASPOON, TABLESPOON, OUNCE, CUP, PINT, QUART, GALLON, FOOT, INCH}
+module.exports = {TEASPOON, TABLESPOON, OUNCE, CUP, PINT, QUART, GALLON, FOOT, INCH, YARD}
 
 
 

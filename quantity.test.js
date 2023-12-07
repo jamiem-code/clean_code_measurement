@@ -1,5 +1,5 @@
 const {Quantity} = require("./quantity")
-const {TEASPOON, TABLESPOON, OUNCE, CUP, PINT, QUART, GALLON, INCH, FOOT} = require("./unit")
+const {TEASPOON, TABLESPOON, OUNCE, CUP, PINT, QUART, GALLON, INCH, FOOT, YARD} = require("./unit")
 
 
 
@@ -63,6 +63,9 @@ describe('quantity', () => {
       });
       test('12 inches is equal to 1 foot', () => {
         expect(new Quantity(12, INCH).isEqual(new Quantity(1, FOOT))).toBe(true)
+      });
+      test('1 yard is equal to 3 foot', () => {
+        expect(new Quantity(1, YARD).isEqual(new Quantity(3, FOOT))).toBe(true)
       });
     });
   });
