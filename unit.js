@@ -27,8 +27,9 @@ const INCH = new Unit (1)
 const FOOT = new Unit(12, INCH)
 const YARD = new Unit(3, FOOT)
 const FURLONG = new Unit(220, YARD)
+const MILE = new Unit(8, FURLONG)
 
-module.exports = {TEASPOON, TABLESPOON, OUNCE, CUP, PINT, QUART, GALLON, FOOT, INCH, YARD, FURLONG}
+module.exports = {TEASPOON, TABLESPOON, OUNCE, CUP, PINT, QUART, GALLON, FOOT, INCH, YARD, FURLONG, MILE}
 
 
 

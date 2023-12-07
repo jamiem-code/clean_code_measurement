@@ -1,5 +1,5 @@
 const {Quantity} = require("./quantity")
-const {TEASPOON, TABLESPOON, OUNCE, CUP, PINT, QUART, GALLON, INCH, FOOT, YARD, FURLONG} = require("./unit")
+const {TEASPOON, TABLESPOON, OUNCE, CUP, PINT, QUART, GALLON, INCH, FOOT, YARD, FURLONG, MILE} = require("./unit")
 
 
 
@@ -69,6 +69,9 @@ describe('quantity', () => {
       });
       test('1 furlong is equal to 220 yards', () => {
         expect(new Quantity(1, FURLONG).isEqual(new Quantity(220, YARD))).toBe(true)
+      });
+      test('1 mile is equal to 8 furlongs', () => {
+        expect(new Quantity(1, MILE).isEqual(new Quantity(8, FURLONG))).toBe(true)
       });
     });
   });
