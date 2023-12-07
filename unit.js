@@ -12,7 +12,7 @@ class Unit {
         return otherValue * otherUnit.baseUnitMultiplier / this.baseUnitMultiplier;
     }
 
-    isComparable(otherUnit){
+    isCompatible(otherUnit){
         return otherUnit.baseUnit === this.baseUnit
     }
 

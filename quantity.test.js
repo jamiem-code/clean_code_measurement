@@ -1,86 +1,131 @@
-const {Quantity} = require("./quantity")
-const {TEASPOON, TABLESPOON, OUNCE, CUP, PINT, QUART, GALLON, INCH, FOOT, YARD, FURLONG, MILE} = require("./unit")
+const { Quantity } = require("./quantity");
+const {
+  TEASPOON,
+  TABLESPOON,
+  OUNCE,
+  CUP,
+  PINT,
+  QUART,
+  GALLON,
+  INCH,
+  FOOT,
+  YARD,
+  FURLONG,
+  MILE,
+} = require("./unit");
 
-
-
-describe('quantity', () => {
-  describe('volume', () => {
-    describe('is equal' , () => {
-      test('a tbsp is equal to a tbsp', () => {
-        expect(new Quantity(1, TABLESPOON).isEqual(new Quantity(1, TABLESPOON))).toBe(true)
+describe("quantity", () => {
+  describe("volume", () => {
+    describe("is equal", () => {
+      test("a tbsp is equal to a tbsp", () => {
+        expect(
+          new Quantity(1, TABLESPOON).isEqual(new Quantity(1, TABLESPOON))
+        ).toBe(true);
       });
-      test('a tbsp is not equal to 2 tbsp', () => {
-          expect(new Quantity(1, TABLESPOON).isEqual(new Quantity(2, TABLESPOON))).toBe(false)
-        });
-        test('a tbsp is not equal to a tsp', () => {
-          expect(new Quantity(1, TEASPOON).isEqual(new Quantity(1, TABLESPOON))).toBe(false)
-        });
-        test('3 tsp is equal to a tbsp', () => {
-          expect(new Quantity(3, TEASPOON).isEqual(new Quantity(1, TABLESPOON))).toBe(true)
-        });
-        test('1 oz is equal to 2 tbsp', () => {
-          expect(new Quantity(1, OUNCE).isEqual(new Quantity(2, TABLESPOON))).toBe(true)
-        });
-        test('1 cup is equal to 8 oz', () => {
-          expect(new Quantity(1, CUP).isEqual(new Quantity(8, OUNCE))).toBe(true)
-        });
-        test('1 pint is equal to 2 cups', () => {
-          expect(new Quantity(1, PINT).isEqual(new Quantity(2, CUP))).toBe(true)
-        });
-        test('1 quart is equal to 2 pints', () => {
-          expect(new Quantity(1, QUART).isEqual(new Quantity(2, PINT))).toBe(true)
-        });
-        test('1 gallon is equal to 4 quarts', () => {
-          expect(new Quantity(1, GALLON).isEqual(new Quantity(4, QUART))).toBe(true)
-        });
-        test('32 tablespoons is equal to 2 cups', () => {
-          expect(new Quantity(32, TABLESPOON).isEqual(new Quantity(2, CUP))).toBe(true)
-        });
-        test('32 tablespoons is equal to 2 cups', () => {
-          expect(new Quantity(2, CUP).isEqual(new Quantity(32, TABLESPOON))).toBe(true)
-        });
+      test("a tbsp is not equal to 2 tbsp", () => {
+        expect(
+          new Quantity(1, TABLESPOON).isEqual(new Quantity(2, TABLESPOON))
+        ).toBe(false);
+      });
+      test("a tbsp is not equal to a tsp", () => {
+        expect(
+          new Quantity(1, TEASPOON).isEqual(new Quantity(1, TABLESPOON))
+        ).toBe(false);
+      });
+      test("3 tsp is equal to a tbsp", () => {
+        expect(
+          new Quantity(3, TEASPOON).isEqual(new Quantity(1, TABLESPOON))
+        ).toBe(true);
+      });
+      test("1 oz is equal to 2 tbsp", () => {
+        expect(
+          new Quantity(1, OUNCE).isEqual(new Quantity(2, TABLESPOON))
+        ).toBe(true);
+      });
+      test("1 cup is equal to 8 oz", () => {
+        expect(new Quantity(1, CUP).isEqual(new Quantity(8, OUNCE))).toBe(true);
+      });
+      test("1 pint is equal to 2 cups", () => {
+        expect(new Quantity(1, PINT).isEqual(new Quantity(2, CUP))).toBe(true);
+      });
+      test("1 quart is equal to 2 pints", () => {
+        expect(new Quantity(1, QUART).isEqual(new Quantity(2, PINT))).toBe(
+          true
+        );
+      });
+      test("1 gallon is equal to 4 quarts", () => {
+        expect(new Quantity(1, GALLON).isEqual(new Quantity(4, QUART))).toBe(
+          true
+        );
+      });
+      test("32 tablespoons is equal to 2 cups", () => {
+        expect(new Quantity(32, TABLESPOON).isEqual(new Quantity(2, CUP))).toBe(
+          true
+        );
+      });
+      test("32 tablespoons is equal to 2 cups", () => {
+        expect(new Quantity(2, CUP).isEqual(new Quantity(32, TABLESPOON))).toBe(
+          true
+        );
+      });
     });
-    describe('quantities can be added' , () => {
-      test('1 tbsp add nothing is still 1 tbsp',() => {
-        let total = new Quantity(1, TABLESPOON).add(new Quantity(0,TEASPOON));
+    describe("quantities can be added", () => {
+      test("1 tbsp add nothing is still 1 tbsp", () => {
+        let total = new Quantity(1, TABLESPOON).add(new Quantity(0, TEASPOON));
         expect(total.isEqual(new Quantity(1, TABLESPOON))).toBe(true);
       });
-      test('1 tbsp add 1 tbsp is eq 2 tbsp',() => {
-        let total = new Quantity(1, TABLESPOON).add(new Quantity(1,TABLESPOON));
+      test("1 tbsp add 1 tbsp is eq 2 tbsp", () => {
+        let total = new Quantity(1, TABLESPOON).add(
+          new Quantity(1, TABLESPOON)
+        );
         expect(total.isEqual(new Quantity(2, TABLESPOON))).toBe(true);
       });
-      test('1 tbsp add 3 tsps is eq 2 tablespoon',() => {
+      test("1 tbsp add 3 tsps is eq 2 tablespoon", () => {
         let total = new Quantity(1, TABLESPOON).add(new Quantity(3, TEASPOON));
         expect(total.isEqual(new Quantity(2, TABLESPOON))).toBe(true);
         expect(total.isEqual(new Quantity(6, TEASPOON))).toBe(true);
       });
     });
-  }); 
-  describe('distance', () => {
-    describe('is equal' , () => {
-      test('1 inch is equal to 1 inch', () => {
-        expect(new Quantity(1, INCH).isEqual(new Quantity(1, INCH))).toBe(true)
+  });
+  describe("distance", () => {
+    describe("is equal", () => {
+      test("1 inch is equal to 1 inch", () => {
+        expect(new Quantity(1, INCH).isEqual(new Quantity(1, INCH))).toBe(true);
       });
-      test('12 inches is equal to 1 foot', () => {
-        expect(new Quantity(12, INCH).isEqual(new Quantity(1, FOOT))).toBe(true)
+      test("12 inches is equal to 1 foot", () => {
+        expect(new Quantity(12, INCH).isEqual(new Quantity(1, FOOT))).toBe(
+          true
+        );
       });
-      test('1 yard is equal to 3 foot', () => {
-        expect(new Quantity(1, YARD).isEqual(new Quantity(3, FOOT))).toBe(true)
+      test("1 yard is equal to 3 foot", () => {
+        expect(new Quantity(1, YARD).isEqual(new Quantity(3, FOOT))).toBe(true);
       });
-      test('1 furlong is equal to 220 yards', () => {
-        expect(new Quantity(1, FURLONG).isEqual(new Quantity(220, YARD))).toBe(true)
+      test("1 furlong is equal to 220 yards", () => {
+        expect(new Quantity(1, FURLONG).isEqual(new Quantity(220, YARD))).toBe(
+          true
+        );
       });
-      test('1 mile is equal to 8 furlongs', () => {
-        expect(new Quantity(1, MILE).isEqual(new Quantity(8, FURLONG))).toBe(true)
+      test("1 mile is equal to 8 furlongs", () => {
+        expect(new Quantity(1, MILE).isEqual(new Quantity(8, FURLONG))).toBe(
+          true
+        );
       });
     });
   });
-   describe('Edge cases', () => {
-     describe('is equal' , () => {
-       test('1 inch is not equal to 1 teaspoon', () => {
-         expect(new Quantity(1, INCH).isEqual(new Quantity(1, TEASPOON))).toBe(false)
-       });
-     });
-   });
+  describe("Edge cases", () => {
+    describe("is equal", () => {
+      test("1 inch compared to 1 teaspoon throws error", () => {
+        expect(() => {
+          new Quantity(1, INCH).isEqual(new Quantity(1, TEASPOON));
+        }).toThrow(TypeError);
+      });
+    });
+    describe("add", () => {
+      test("1 inch added to 1 teaspoon throws error", () => {
+        expect(() => {
+          new Quantity(1, INCH).add(new Quantity(1, TEASPOON));
+        }).toThrow(TypeError);
+      });
+    });
+  });
 });
-
