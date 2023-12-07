@@ -4,10 +4,16 @@ class Quantity {
         this.unit = unit
     }
 
-    isEqual(that) {
-        let thatInTeaspoons = that.unit.getBaseUnits(that.value)
-        let thisInTeaspoons = this.unit.getBaseUnits(this.value)
-        return thatInTeaspoons == thisInTeaspoons
+    isEqual(other) {
+        let otherAmountInBaseUnits = other.unit.getBaseUnits(other.value);
+        let thisAmountInBaseUnits = this.unit.getBaseUnits(this.value);
+        return otherAmountInBaseUnits == thisAmountInBaseUnits;
+    }
+
+    add(other) {
+        let otherEquivalentAmount = this.unit.getConvertedAmount(other.unit, other.value);
+        let newAmount = this.value + otherEquivalentAmount;
+        return new Quantity(newAmount, this.unit);
     }
 }
 

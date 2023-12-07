@@ -1,14 +1,16 @@
 class Unit {
-    constructor(baseUnitMultiplier, baseUnit=null) {
-        this.baseUnitMultiplier = baseUnitMultiplier
-        this.baseUnit = baseUnit
+    constructor(relativeUnitMultiplier, relativeUnit = null) {
+        this.relativeUnitMultiplier = relativeUnitMultiplier
+        this.baseUnitMultiplier = this.relativeUnitMultiplier * (relativeUnit?.baseUnitMultiplier ?? 1)
+        this.relativeUnit = relativeUnit
     }
 
     getBaseUnits(amount) {
-        if (!this.baseUnit) {
-            return amount * this.baseUnitMultiplier;
-        }
-        return this.baseUnit.getBaseUnits(amount * this.baseUnitMultiplier);
+        return amount * this.baseUnitMultiplier;
+    }
+
+    getConvertedAmount(otherUnit, otherValue) {
+        return otherValue * otherUnit.baseUnitMultiplier / this.baseUnitMultiplier;
     }
 }
 
