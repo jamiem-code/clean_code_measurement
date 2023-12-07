@@ -1,5 +1,5 @@
 const {Quantity} = require("./quantity")
-const {TEASPOON, TABLESPOON, OUNCE, CUP, PINT, QUART, GALLON} = require("./unit")
+const {TEASPOON, TABLESPOON, OUNCE, CUP, PINT, QUART, GALLON, INCH, FOOT} = require("./unit")
 
 
 

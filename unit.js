@@ -23,7 +23,10 @@ const PINT = new Unit(2, CUP)
 const QUART = new Unit(2, PINT)
 const GALLON = new Unit(4, QUART)
 
-module.exports = {TEASPOON, TABLESPOON, OUNCE, CUP, PINT, QUART, GALLON}
+const INCH = new Unit (1)
+const FOOT = new Unit(12, INCH)
+
+module.exports = {TEASPOON, TABLESPOON, OUNCE, CUP, PINT, QUART, GALLON, FOOT, INCH}
 
 
 

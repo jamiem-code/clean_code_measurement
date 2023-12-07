@@ -7,7 +7,7 @@ class Quantity {
     isEqual(other) {
         let otherAmountInBaseUnits = other.unit.getBaseUnits(other.value);
         let thisAmountInBaseUnits = this.unit.getBaseUnits(this.value);
-        return otherAmountInBaseUnits == thisAmountInBaseUnits;
+        return otherAmountInBaseUnits === thisAmountInBaseUnits;
     }
 
     add(other) {
